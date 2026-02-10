@@ -66,6 +66,6 @@ jobs:
             echo '=== Status po redeploy ==='
             pm2 show new-eRZet
             echo '=== Ostatnie 20 linii logów ==='
-            pm2 logs new-eRZet --lines 20 --raw || true
+            pm2 logs new-eRZet --lines 20 --nostream
           "
 
