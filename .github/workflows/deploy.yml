@@ -57,7 +57,7 @@ jobs:
       - name: Restart PM2
         run: |
           ssh vm "
-            cd /home/bordini/apps/new-erzet
+            cd /home/bordini/apps
             pm2 reload new-eRZet || pm2 start ecosystem.config.js
             pm2 save
             pm2 logs new-eRZet --lines 50
