@@ -51,7 +51,7 @@ jobs:
           ssh vm "
             source ~/.nvm/nvm.sh && nvm use 20
             cd /home/bordini/apps/new-erzet
-            pnpm install --prod --frozen-lockfile
+            pnpm install --frozen-lockfile
           "
 
       - name: Restart PM2
