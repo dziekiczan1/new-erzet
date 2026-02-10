@@ -60,7 +60,7 @@ jobs:
             source ~/.nvm/nvm.sh
             nvm use 20
             export PATH=\$NVM_BIN:\$PATH
-            cd /home/bordini/apps/new-erzet
+            cd /home/bordini/apps
             pm2 stop new-eRZet || true
             pm2 delete new-eRZet || true
             pm2 start ecosystem.config.js --env production
