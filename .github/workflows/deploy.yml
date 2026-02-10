@@ -28,7 +28,7 @@ jobs:
         run: npm install -g pnpm@latest
 
       - name: Instalacja zależności
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Deploy przez SSH + build na VM
         uses: appleboy/ssh-action@v1.2.5
@@ -47,7 +47,7 @@ jobs:
             git fetch --all
             git reset --hard origin/master
             git clean -fd
-            pnpm install --prod --no-frozen-lockfile
+            pnpm install --frozen-lockfile
             pnpm build
             pm2 reload new-eRZet --update-env || pm2 restart new-eRZet
             pm2 logs new-eRZet --lines 50
