@@ -1,0 +1,50 @@
+name: Deploy Next.js to OCI VM
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout kodu
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: Instalacja pnpm
+        run: npm install -g pnpm@latest
+
+      - name: Instalacja zależności
+        run: pnpm install --frozen-lockfile
+
+      - name: Deploy przez SSH + build na VM
+        uses: appleboy/ssh-action@v1.2.5
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            set -e
+            cd /home/bordini/apps/new-erzet
+            command -v pnpm >/dev/null 2>&1 || npm install -g pnpm@latest
+            git fetch --all
+            git reset --hard origin/master
+            git clean -fd
+            pnpm install --prod --frozen-lockfile
+            pnpm build
+            pm2 reload new-eRZet --update-env || pm2 restart new-eRZet
+            pm2 logs new-eRZet --lines 50
