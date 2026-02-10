@@ -5,10 +5,10 @@ on:
     branches: [master]
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout kodu
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -24,33 +24,41 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
 
-      - name: Instalacja pnpm
+      - name: Install pnpm
         run: npm install -g pnpm@latest
 
-      - name: Instalacja zależności
+      - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Deploy przez SSH + build na VM
-        uses: appleboy/ssh-action@v1.2.5
-        with:
-          host: ${{ secrets.VM_HOST }}
-          username: ${{ secrets.VM_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          port: 22
-          script: |
-            set -e
+      - name: Build Next.js
+        run: pnpm build
+
+      - name: Prepare SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/github-action
+          chmod 600 ~/.ssh/github-action
+          echo -e "Host vm\n\tUser ${{ secrets.VM_USER }}\n\tHostname ${{ secrets.VM_HOST }}\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking no" >> ~/.ssh/config
+
+      - name: Deploy to VM via rsync
+        run: |
+          rsync -avz --delete .next/ vm:/home/bordini/apps/new-erzet/.next
+          rsync -avz --delete public/ vm:/home/bordini/apps/new-erzet/public
+          rsync -avz package.json pnpm-lock.yaml vm:/home/bordini/apps/new-erzet/
+
+      - name: Install dependencies on VM
+        run: |
+          ssh vm "
             source ~/.nvm/nvm.sh && nvm use 20
-            node -v
-            which node
             cd /home/bordini/apps/new-erzet
-            command -v pnpm >/dev/null 2>&1 || npm install -g pnpm@latest
-            git fetch --all
-            git reset --hard origin/master
-            git clean -fd
-            pnpm install --frozen-lockfile
-            pnpm build
-            pm2 stop new-eRZet || true
-            pm2 delete new-eRZet || true
-            pm2 start /home/bordini/apps/new-erzet/ecosystem.config.js
+            pnpm install --prod --frozen-lockfile
+          "
+
+      - name: Restart PM2
+        run: |
+          ssh vm "
+            cd /home/bordini/apps/new-erzet
+            pm2 reload new-eRZet || pm2 start ecosystem.config.js
             pm2 save
             pm2 logs new-eRZet --lines 50
+          "
