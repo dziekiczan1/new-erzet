@@ -57,8 +57,13 @@ jobs:
       - name: Restart PM2
         run: |
           ssh vm "
-            cd /home/bordini/apps/new-eRZet
-            pm2 reload new-eRZet || pm2 start /home/bordini/apps/ecosystem.config.js
+            source ~/.nvm/nvm.sh
+            nvm use 20
+            export PATH=\$NVM_BIN:\$PATH
+            cd /home/bordini/apps/new-erzet
+            pm2 stop new-eRZet || true
+            pm2 delete new-eRZet || true
+            pm2 start ecosystem.config.js --env production
             pm2 save
             pm2 logs new-eRZet --lines 50
           "
