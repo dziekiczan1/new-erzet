@@ -27,12 +27,6 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm@latest
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build Next.js
-        run: pnpm build
-
       - name: Prepare SSH
         run: |
           mkdir -p ~/.ssh
@@ -40,31 +34,33 @@ jobs:
           chmod 600 ~/.ssh/github-action
           echo -e "Host vm\n\tUser ${{ secrets.VM_USER }}\n\tHostname ${{ secrets.VM_HOST }}\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking no" >> ~/.ssh/config
 
-      - name: Deploy to VM via rsync
+      - name: Deploy code to VM
         run: |
-          rsync -avz --delete .next/ vm:/home/bordini/apps/new-erzet/.next
-          rsync -avz --delete public/ vm:/home/bordini/apps/new-erzet/public
-          rsync -avz package.json pnpm-lock.yaml vm:/home/bordini/apps/new-erzet/
+          rsync -avz --delete package.json pnpm-lock.yaml public/ vm:/home/bordini/apps/new-erzet/
 
-      - name: Install dependencies on VM
+      - name: Build & reload on VM
         run: |
           ssh vm "
             source ~/.nvm/nvm.sh && nvm use 20
             cd /home/bordini/apps/new-erzet
+
+            echo 'Installing dependencies...'
             pnpm install --frozen-lockfile
-          "
 
-      - name: Restart PM2
-        run: |
-          ssh vm "
-            source ~/.nvm/nvm.sh
-            nvm use 20
-            export PATH=\$NVM_BIN:\$PATH
-            cd /home/bordini/apps/new-erzet
-            pm2 stop new-eRZet || true
-            pm2 delete new-eRZet || true
-            pm2 start /home/bordini/apps/ecosystem.config.js
-            pm2 save
-            pm2 logs new-eRZet --lines 20 --nostream
-          "
+            echo 'Building Next.js in temp folder...'
+            BUILD_DIR=temp pnpm build
+            if [ ! -d temp ]; then
+              echo 'Build failed!'
+              exit 1
+            fi
 
+            echo 'Switching directories...'
+            rm -rf .next.old
+            mv .next .next.old || true
+            mv temp .next
+
+            echo 'Reloading PM2 (zero downtime)...'
+            pm2 reload new-eRZet --update-env
+
+            echo 'Deploy finished!'
+          "
