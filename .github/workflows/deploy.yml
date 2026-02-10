@@ -47,7 +47,7 @@ jobs:
             git fetch --all
             git reset --hard origin/master
             git clean -fd
-            pnpm install --prod --frozen-lockfile
+            pnpm install --prod --no-frozen-lockfile
             pnpm build
             pm2 reload new-eRZet --update-env || pm2 restart new-eRZet
             pm2 logs new-eRZet --lines 50
