@@ -39,6 +39,9 @@ jobs:
           port: 22
           script: |
             set -e
+            source ~/.nvm/nvm.sh && nvm use 20
+            node -v
+            which node
             cd /home/bordini/apps/new-erzet
             command -v pnpm >/dev/null 2>&1 || npm install -g pnpm@latest
             git fetch --all
