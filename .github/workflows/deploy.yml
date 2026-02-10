@@ -49,5 +49,8 @@ jobs:
             git clean -fd
             pnpm install --frozen-lockfile
             pnpm build
-            pm2 reload new-eRZet --update-env || pm2 restart new-eRZet
+            pm2 stop new-eRZet || true
+            pm2 delete new-eRZet || true
+            pm2 start /home/bordini/apps/new-erzet/ecosystem.config.js
+            pm2 save
             pm2 logs new-eRZet --lines 50
