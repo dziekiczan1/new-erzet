@@ -40,6 +40,13 @@ jobs:
           chmod 600 ~/.ssh/github-action
           echo -e "Host vm\n\tUser ${{ secrets.VM_USER }}\n\tHostname ${{ secrets.VM_HOST }}\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking no" >> ~/.ssh/config
 
+      - name: Create directories on VM
+        run: |
+          ssh vm "
+            mkdir -p /home/bordini/apps/new-erzet/.next
+            mkdir -p /home/bordini/apps/new-erzet/public
+          "
+
       - name: Deploy to VM via rsync
         run: |
           rsync -avz --delete .next/ vm:/home/bordini/apps/new-erzet/.next
