@@ -36,7 +36,10 @@ jobs:
 
       - name: Deploy code to VM
         run: |
-          rsync -avz --delete package.json pnpm-lock.yaml public/ vm:/home/bordini/apps/new-erzet/
+          rsync -avz --delete \
+          pages/ app/ components/ lib/ styles/ next.config.js package.json pnpm-lock.yaml public/ \
+          vm:/home/bordini/apps/new-erzet/
+
 
       - name: Build & reload on VM
         run: |
