@@ -61,11 +61,10 @@ jobs:
             nvm use 20
             export PATH=\$NVM_BIN:\$PATH
             cd /home/bordini/apps/new-erzet
-            pm2 reload new-eRZet --update-env || pm2 restart new-eRZet
+            pm2 stop new-eRZet || true
+            pm2 delete new-eRZet || true
+            pm2 start /home/bordini/apps/ecosystem.config.js
             pm2 save
-            echo '=== Status po redeploy ==='
-            pm2 show new-eRZet
-            echo '=== Ostatnie 20 linii logów ==='
             pm2 logs new-eRZet --lines 20 --nostream
           "
 
