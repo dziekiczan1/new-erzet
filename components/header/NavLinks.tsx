@@ -52,7 +52,7 @@ export function NavLinks({ onLinkClick, isMobile = false }: NavLinksProps) {
             spy
             smooth
             duration={500}
-            offset={-96}
+            offset={-150}
             activeClass="link-active"
             className={sharedClasses}
             tabIndex={0}

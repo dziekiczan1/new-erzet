@@ -3,7 +3,7 @@
 :root {
     /* Color Palette*/
     --primary: oklch(0.62 0.28 330);
-    --primary-light: oklch(0.78 0.18 330);
+    --primary-light: oklch(0.87 0.05 307);
     --secondary: oklch(0.42 0.15 280);
     --tertiary: oklch(0.48 0.18 290);
     --light: oklch(0.92 0.04 300);
@@ -22,7 +22,7 @@
     --color-foreground: var(--foreground);
 
     /* Font Theme */
-    --font-serif: var(--font-playfair-display);
+    --font-serif: var(--font-roboto);
     --font-body: var(--font-inter);
 }
 
@@ -34,11 +34,22 @@
     }
 
     /* ========== TYPOGRAPHY ========== */
-    h1, .hero-text {
-        @apply font-serif font-black leading-[1.1] tracking-tight bg-gradient-to-r from-primary to-tertiary;
+    h1 {
+        @apply font-serif font-black leading-[1.1] tracking-tight;
         font-size: clamp(2.5rem, 1.5rem + 5vw, 4rem);
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+        text-wrap: balance;
+
+        .hero-text {
+            @apply bg-gradient-to-r from-primary to-tertiary;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    @media (max-width: 768px) {
+        h1 {
+            font-size: clamp(1.5rem, 1rem + 3vw, 2.5rem);
+        }
     }
 
     h2 {
@@ -103,6 +114,14 @@
         @apply w-full max-w-6xl mx-auto px-4 py-2;
     }
 
+    header {
+        @apply w-full bg-background/80 backdrop-blur-md px-4 md:px-16 py-2 md:py-4 shadow-sm transition-all;
+    }
+
+    header.scrolled {
+        @apply md:rounded-2xl md:my-2 md:px-4 md:max-w-6xl md:mx-auto;
+    }
+
     .btn {
         @apply inline-flex items-center justify-center gap-2 font-semibold
         rounded-xl border border-transparent text-white transition-all shadow-sm hover:shadow-md
@@ -121,11 +140,11 @@
     }
 
     .btn-lg {
-        @apply text-lg px-8 py-4;
+        @apply text-base md:text-lg px-4 md:px-8 py-2 md:py-4;
     }
 
     .btn-md {
-        @apply text-base px-4 py-2;
+        @apply text-sm md:text-base px-2 md:px-4 py-2;
     }
 
     .btn-sm {
@@ -150,5 +169,16 @@
 
     .link.link-active::after {
         @apply content-[''] absolute -bottom-1 left-0 h-px w-full bg-primary transition-all;
+    }
+}
+
+@keyframes spotlight {
+    0% {
+        opacity: 0;
+        transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -40%) scale(1);
     }
 }

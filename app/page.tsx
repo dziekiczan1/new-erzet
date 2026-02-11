@@ -1,11 +1,12 @@
-import Hero from "@/components/Hero";
-import Hero2 from "@/components/Hero2";
+import Hero from "@/components/hero/Hero";
+import About from "@/components/hero/About";
 
 export default function Home() {
   return (
     <main className={`min-h-screen flex flex-col`}>
       <Hero />
-      {/*<Hero2 />*/}
+      <About />
+      <About />
     </main>
   );
 }

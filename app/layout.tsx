@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Roboto } from "next/font/google";
 
 import "./global.css";
 import Header from "@/components/header/Header";
 
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair-display",
+const roboto = Roboto({
+  variable: "--font-roboto",
   subsets: ["latin"],
 });
 
@@ -26,9 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${playfairDisplay.variable} ${inter.variable} antialiased`}
-      >
+      <body className={`${roboto.variable} ${inter.variable} antialiased`}>
         <Header />
         {children}
       </body>
