@@ -7,9 +7,16 @@ interface GridPatternProps {
   y?: number;
   squares?: Array<[x: number, y: number]>;
   strokeDasharray?: string;
-  className?: string;
+  variant?: "top-right" | "bottom-right";
   [key: string]: unknown;
 }
+
+const VARIANTS = {
+  "top-right":
+    "[mask-image:linear-gradient(to_top_right,white,transparent,transparent)] fill-gray-400/30 stroke-gray-400/30",
+  "bottom-right":
+    "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] fill-gray-300/20 stroke-gray-300/20",
+};
 
 export function GridPattern({
   width = 10,
@@ -18,16 +25,16 @@ export function GridPattern({
   y = -1,
   strokeDasharray = "0",
   squares,
+  variant = "top-right",
   ...props
 }: GridPatternProps) {
   const id = useId();
+  const variantClass = VARIANTS[variant] ?? VARIANTS["top-right"];
 
   return (
     <svg
       aria-hidden="true"
-      className={
-        "pointer-events-none absolute inset-0 h-full w-full fill-gray-400/30 stroke-gray-400/30 [mask-image:linear-gradient(to_top_right,white,transparent,transparent)]"
-      }
+      className={`pointer-events-none absolute inset-0 h-full w-full ${variantClass}`}
       {...props}
     >
       <defs>

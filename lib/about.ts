@@ -1,8 +1,10 @@
 export const aboutText = {
-  title: "About Us",
+  title: "O naszej firmie",
   paragraphs: [
-    "We are a team of passionate developers building modern web experiences.",
-    "Our mission is to deliver clean, scalable, and performant applications.",
-    "We value collaboration, testing, and good code practices in every project.",
+    "eRZet specjalizuje się w projektowaniu i tworzeniu stron internetowych dla różnych branż. Skupiamy się na świadczeniu usług najwyższej jakości, dostosowanych do indywidualnych potrzeb klientów.",
+
+    "Nasz zespół to doświadczeni specjaliści, którzy dzięki zaangażowaniu i profesjonalizmowi dostarczają rozwiązania wspierające rozwój biznesu naszych klientów.",
+
+    "Do każdego projektu podchodzimy indywidualnie, tworząc strony, które są nie tylko atrakcyjne wizualnie, ale przede wszystkim funkcjonalne i skuteczne w osiąganiu celów biznesowych.",
   ],
 };

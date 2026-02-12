@@ -27,6 +27,8 @@ interface MotionImageProps extends Omit<ImageProps, "src"> {
   duration?: number;
   customVariants?: Variants;
   className?: string;
+  fetchPriority?: "auto" | "high" | "low";
+  animateImmediately?: boolean;
 }
 
 const presets: Record<AnimationPreset, Variants> = {
@@ -98,6 +100,8 @@ export default function MotionImage({
   duration = 0.8,
   customVariants,
   className,
+  fetchPriority = "auto",
+  animateImmediately = false,
   ...imageProps
 }: MotionImageProps) {
   const variants = customVariants ?? presets[preset];
@@ -111,7 +115,8 @@ export default function MotionImage({
   return (
     <motion.div
       initial="hidden"
-      whileInView="visible"
+      animate={animateImmediately ? "visible" : undefined}
+      whileInView={animateImmediately ? undefined : "visible"}
       viewport={{ once: true, margin: "-80px" }}
       variants={variants}
       transition={transition}
@@ -120,10 +125,8 @@ export default function MotionImage({
       <Image
         src={src}
         alt={alt}
-        priority
-        width={850}
-        height={720}
-        // sizes="(max-width: 768px) 100vw, 50vw"
+        fetchPriority={fetchPriority}
+        className="w-auto object-cover lg:w-full"
         {...imageProps}
       />
     </motion.div>

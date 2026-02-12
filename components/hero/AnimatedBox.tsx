@@ -1,7 +1,8 @@
 "use client";
 import { motion, Variants } from "framer-motion";
 import { heroText } from "@/lib/hero";
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
+import { Link } from "react-scroll";
 
 interface AnimatedTextProps {
   lines: string[];
@@ -31,7 +32,7 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="flex flex-col gap-4 md:gap-8 md:max-w-4xl"
+      className="flex flex-col gap-4 lg:gap-8 lg:max-w-4xl"
     >
       <h1>
         {lines.map((line, i) => (
@@ -42,12 +43,21 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
           </motion.span>
         ))}
       </h1>
-      <p className="text-base md:text-lg text-neutral-600 leading-relaxed max-w-xl">
-        {heroText.description}
-      </p>
-      <Button size="lg" className="w-fit">
-        {heroText.cta}
-      </Button>
+      <p className="max-w-xl">{heroText.description}</p>
+
+      <Link
+        to="contact"
+        smooth
+        duration={500}
+        offset={-64}
+        role="button"
+        tabIndex={0}
+        className="w-fit sm:mx-auto lg:mx-0"
+        href="#contact"
+        aria-label={`Scroll to Contact section`}
+      >
+        <Button size="lg">{heroText.cta}</Button>
+      </Link>
     </motion.div>
   );
 };

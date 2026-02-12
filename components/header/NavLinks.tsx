@@ -34,6 +34,7 @@ export function NavLinks({ onLinkClick, isMobile = false }: NavLinksProps) {
               className={sharedClasses}
               tabIndex={0}
               role={`link`}
+              href={`#${item.id}`}
             >
               {item.label}
             </Link>
@@ -52,10 +53,12 @@ export function NavLinks({ onLinkClick, isMobile = false }: NavLinksProps) {
             spy
             smooth
             duration={500}
-            offset={-150}
+            offset={-64}
             activeClass="link-active"
             className={sharedClasses}
             tabIndex={0}
+            role={`link`}
+            href={`#${item.id}`}
           >
             {item.label}
           </Link>

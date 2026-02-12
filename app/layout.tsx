@@ -3,15 +3,20 @@ import { Inter, Roboto } from "next/font/google";
 
 import "./global.css";
 import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
 
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -25,10 +30,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pl">
       <body className={`${roboto.variable} ${inter.variable} antialiased`}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
