@@ -1,7 +1,7 @@
-export type NavItem = {
+export interface NavItem {
   label: string;
   id: string;
-};
+}
 
 export const NAV_ITEMS: readonly NavItem[] = [
   { label: "Strona główna", id: "home" },

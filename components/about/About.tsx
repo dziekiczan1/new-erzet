@@ -9,15 +9,18 @@ const About = () => {
     <section
       id="about"
       className="section-wrapper bg-gradient-to-b from-primary-light to-background lg:pb-20"
+      aria-labelledby="about-heading"
     >
       <div className="container-main flex flex-col gap-4 lg:gap-8 p-0">
         <div className="flex flex-col gap-4 lg:gap-16">
-          <h2 className="mx-auto">{aboutText.title}</h2>
+          <h2 id="about-heading" className="mx-auto">
+            {aboutText.title}
+          </h2>
           <div className="flex flex-col-reverse lg:flex-row gap-4 lg:gap-16">
             <div className="flex justify-center items-center flex-1 lg:h-auto max-h-[50svh] lg:max-h-none aspect-[582/505]">
               <MotionImage
                 src={`${IMG_URL}/about-lg.svg`}
-                alt="Hero illustration"
+                alt="Ilustracja przedstawiająca zespół tworzący rozwiązania cyfrowe"
                 preset="zoom-in"
                 duration={2}
                 className="flex justify-center items-center lg:items-stretch w-full min-h-full"

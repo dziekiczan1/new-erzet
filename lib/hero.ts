@@ -1,9 +1,9 @@
-export type HeroText = {
+export interface HeroText {
   title: string[];
   description: string;
   ctaMain: string;
   ctaSecondary: string;
-};
+}
 
 export const heroText: HeroText = {
   title: [

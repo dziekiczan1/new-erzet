@@ -1,8 +1,8 @@
-export type Service = {
+export interface Service {
   title: string;
   description: string;
   icon: string;
-};
+}
 
 export const servicesHeading = "Nasze Usługi";
 

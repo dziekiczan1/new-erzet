@@ -39,7 +39,7 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
       <Badge
         text="Nowoczesne rozwiązania webowe"
         icon={Star}
-        className="sm:mx-auto lg:mx-0 sm:inline-flex"
+        className="sm:mx-auto lg:mx-0 flex"
       />
       <h1>
         {lines.map((line, i) => (
@@ -62,7 +62,7 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
           tabIndex={0}
           className="w-fit"
           href="#contact"
-          aria-label={`Scroll to Contact section`}
+          aria-label={`Nawiguj do sekcji Kontakt`}
         >
           <Button size="lg">{heroText.ctaMain}</Button>
         </Link>
@@ -75,7 +75,7 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
           tabIndex={0}
           className="w-fit"
           href="#services"
-          aria-label={`Scroll to Services section`}
+          aria-label={`Nawiguj do sekcji Usługi`}
         >
           <Button size="lg" variant="secondary">
             {heroText.ctaSecondary}

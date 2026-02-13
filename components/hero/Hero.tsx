@@ -20,7 +20,7 @@ const Hero = () => {
       <div className="lg:flex-1 flex justify-center lg:p-8 lg:pl-0 lg:pb-0 w-full h-full">
         <MotionImage
           src={`${IMG_URL}/hero-svg.svg`}
-          alt="Hero illustration"
+          alt="Programiści tworzący nowoczesne aplikacje webowe"
           preset="zoom-in"
           priority
           fetchPriority="high"
@@ -30,9 +30,10 @@ const Hero = () => {
       </div>
       <Image
         src="./divider.svg"
-        alt={"Divider"}
+        alt=""
         priority
         fetchPriority="high"
+        aria-hidden="true"
         width={671}
         height={9}
         className="absolute left-0 bottom-0 right-0 w-full"

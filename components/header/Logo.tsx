@@ -20,7 +20,7 @@ const Logo = () => {
     <Link
       href="#home"
       className="font-serif text-lg font-black tracking-tight"
-      aria-label="eRZet Homepage"
+      aria-label="Strona główna eRZet"
     >
       <motion.svg
         width="692"
@@ -29,7 +29,7 @@ const Logo = () => {
         viewBox="0 0 692 221"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        aria-labelledby="Company Logo"
+        aria-hidden="true"
         initial="hidden"
         animate="visible"
       >

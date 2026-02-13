@@ -48,7 +48,11 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
     >
       <div className="service-card-inner square-bevel">
         <div className="service-card-icon-wrapper">
-          <Icon className="service-card-icon" />
+          <Icon
+            aria-hidden="true"
+            focusable="false"
+            className="service-card-icon"
+          />
         </div>
 
         <h3 className="service-card-title">{service.title}</h3>
