@@ -27,6 +27,8 @@ interface MotionImageProps extends Omit<ImageProps, "src"> {
   duration?: number;
   customVariants?: Variants;
   className?: string;
+  imageClass?: string;
+  priority?: boolean;
   fetchPriority?: "auto" | "high" | "low";
   animateImmediately?: boolean;
 }
@@ -100,6 +102,8 @@ export default function MotionImage({
   duration = 0.8,
   customVariants,
   className,
+  imageClass,
+  priority = false,
   fetchPriority = "auto",
   animateImmediately = false,
   ...imageProps
@@ -125,8 +129,13 @@ export default function MotionImage({
       <Image
         src={src}
         alt={alt}
+        priority={priority}
+        fill
         fetchPriority={fetchPriority}
-        className="w-auto object-cover lg:w-full"
+        className={clsx(
+          imageClass,
+          "object-contain w-auto min-h-full lg:w-full h-auto",
+        )}
         {...imageProps}
       />
     </motion.div>

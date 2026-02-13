@@ -11,7 +11,7 @@ const Badge = ({ text, icon: Icon, className }: BadgeProps) => {
   return (
     <div
       className={clsx(
-        "inline-flex items-center gap-2 px-4 py-1 rounded-full bg-gradient-to-r from-primary to-tertiary text-white text-sm font-medium shadow-md select-none w-fit",
+        "items-center gap-2 px-4 py-1 rounded-full bg-gradient-to-r from-primary to-tertiary text-white text-sm font-medium shadow-md select-none w-fit",
         className,
       )}
     >

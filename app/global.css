@@ -24,6 +24,9 @@
     /* Font Theme */
     --font-serif: var(--font-roboto);
     --font-body: var(--font-inter);
+
+    /* Breakpoints */
+    --breakpoint-xs: 480px;
 }
 
 @layer base {
@@ -39,7 +42,7 @@
 
     /* ========== TYPOGRAPHY ========== */
     h1 {
-        @apply font-serif font-black leading-[1.1] tracking-tight text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-balance;
+        @apply font-serif font-black leading-[1.1] tracking-tight text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-balance;
 
         .hero-text {
             @apply bg-gradient-to-r from-primary to-tertiary;

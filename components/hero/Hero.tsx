@@ -10,28 +10,28 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex flex-col lg:flex-row items-center gap-8 pb-8 pt-18 lg:py-20 px-4 lg:px-8 h-svh lg:h-dvh max-h-svh lg:max-h-dvh"
+      className="relative flex flex-col lg:flex-row items-center gap-4 lg:gap-8 pb-8 pt-18 lg:py-20 px-4 lg:px-8 lg:h-svh lg:max-h-svh"
     >
       <GridPattern />
       <div className="absolute -left-20 top-0 h-[300px] w-[300px] sm:h-[400px] sm:w-[500px] lg:h-[600px] lg:w-[800px] rounded-full bg-primary-light blur-[120px]" />
-      <div className="flex-1 z-10 lg:p-8 lg:pr-0 sm:text-center lg:text-left">
+      <div className="lg:flex-1 z-10 lg:p-8 lg:pr-0 sm:text-center lg:text-left">
         <AnimatedBox lines={heroText.title} />
       </div>
-      <div className="flex justify-center flex-1 lg:p-8 lg:pl-0 lg:pb-0 max-h-[50dvh] lg:max-h-none">
+      <div className="lg:flex-1 flex justify-center lg:p-8 lg:pl-0 lg:pb-0 w-full h-full">
         <MotionImage
-          src={`${IMG_URL}/hero.png`}
+          src={`${IMG_URL}/hero-svg.svg`}
           alt="Hero illustration"
           preset="zoom-in"
+          priority
           fetchPriority="high"
           duration={0.5}
-          width={938}
-          height={800}
-          className="flex justify-center items-center lg:items-stretch"
+          className="flex justify-center items-center lg:items-stretch w-full max-h-[50svh] lg:max-h-none aspect-[260/221]"
         />
       </div>
       <Image
         src="./divider.svg"
         alt={"Divider"}
+        priority
         fetchPriority="high"
         width={671}
         height={9}

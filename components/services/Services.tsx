@@ -5,7 +5,7 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="section-wrapper lg:pt-0 bg-gradient-to-b from-background to-primary-light"
+      className="section-wrapper pt-0 bg-gradient-to-b from-background to-primary-light"
     >
       <div className="container-main flex flex-col gap-8 lg:gap-16 p-0">
         <h2 className="mx-auto">{servicesHeading}</h2>

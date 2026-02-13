@@ -36,7 +36,11 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
       animate="visible"
       className="flex flex-col gap-4 lg:gap-12 lg:max-w-4xl"
     >
-      <Badge text="Nowoczesne rozwiązania webowe" icon={Star} />
+      <Badge
+        text="Nowoczesne rozwiązania webowe"
+        icon={Star}
+        className="sm:mx-auto lg:mx-0 sm:inline-flex"
+      />
       <h1>
         {lines.map((line, i) => (
           <motion.span key={i} variants={lineVariants}>
@@ -48,7 +52,7 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
       </h1>
       <p className="max-w-xl">{heroText.description}</p>
 
-      <div className="flex gap-4 lg:gap-12">
+      <div className="flex gap-4 lg:gap-12 sm:justify-center lg:justify-start">
         <Link
           to="contact"
           smooth
@@ -56,7 +60,7 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
           offset={-64}
           role="button"
           tabIndex={0}
-          className="w-fit sm:mx-auto lg:mx-0"
+          className="w-fit"
           href="#contact"
           aria-label={`Scroll to Contact section`}
         >
@@ -69,7 +73,7 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
           offset={-64}
           role="button"
           tabIndex={0}
-          className="w-fit sm:mx-auto lg:mx-0"
+          className="w-fit"
           href="#services"
           aria-label={`Scroll to Services section`}
         >

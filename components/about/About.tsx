@@ -8,20 +8,20 @@ const About = () => {
   return (
     <section
       id="about"
-      className="section-wrapper bg-gradient-to-b from-primary-light to-background"
+      className="section-wrapper bg-gradient-to-b from-primary-light to-background lg:pb-20"
     >
       <div className="container-main flex flex-col gap-4 lg:gap-8 p-0">
         <div className="flex flex-col gap-4 lg:gap-16">
           <h2 className="mx-auto">{aboutText.title}</h2>
-          <div className="flex flex-col-reverse lg:flex-row lg:items-center gap-4 lg:gap-16">
-            <div className="flex justify-center items-center flex-1 max-h-[50dvh] lg:max-h-none">
+          <div className="flex flex-col-reverse lg:flex-row gap-4 lg:gap-16">
+            <div className="flex justify-center items-center flex-1 lg:h-auto max-h-[50svh] lg:max-h-none aspect-[582/505]">
               <MotionImage
-                src={`${IMG_URL}/about.png`}
+                src={`${IMG_URL}/about-lg.svg`}
                 alt="Hero illustration"
                 preset="zoom-in"
-                width={920}
-                height={799}
                 duration={2}
+                className="flex justify-center items-center lg:items-stretch w-full min-h-full"
+                imageClass="min-h-0"
               />
             </div>
             <div
