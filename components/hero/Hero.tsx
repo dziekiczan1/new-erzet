@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex flex-col lg:flex-row items-center gap-8 pb-8 pt-18 lg:py-20 px-4 lg:px-8 h-dvh max-h-dvh"
+      className="relative flex flex-col lg:flex-row items-center gap-8 pb-8 pt-18 lg:py-20 px-4 lg:px-8 h-svh lg:h-dvh max-h-svh lg:max-h-dvh"
     >
       <GridPattern />
       <div className="absolute -left-20 top-0 h-[300px] w-[300px] sm:h-[400px] sm:w-[500px] lg:h-[600px] lg:w-[800px] rounded-full bg-primary-light blur-[120px]" />
