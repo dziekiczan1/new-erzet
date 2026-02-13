@@ -1,15 +1,16 @@
-import { GridPattern } from "@/components/ui/Grid";
-import { heroText } from "@/lib/hero";
-import MotionImage from "@/components/ui/MotionImage";
-import AnimatedBox from "@/components/hero/AnimatedBox";
-import { IMG_URL } from "@/lib/images";
 import Image from "next/image";
+
+import AnimatedBox from "@/components/hero/AnimatedBox";
+import { GridPattern } from "@/components/ui/Grid";
+import MotionImage from "@/components/ui/MotionImage";
+import { heroText } from "@/lib/hero";
+import { IMG_URL } from "@/lib/images";
 
 const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex flex-col lg:flex-row items-center gap-8 pb-8 pt-22 lg:py-20 px-4 lg:px-8 h-dvh max-h-dvh"
+      className="relative flex flex-col lg:flex-row items-center gap-8 pb-8 pt-18 lg:py-20 px-4 lg:px-8 h-dvh max-h-dvh"
     >
       <GridPattern />
       <div className="absolute -left-20 top-0 h-[300px] w-[300px] sm:h-[400px] sm:w-[500px] lg:h-[600px] lg:w-[800px] rounded-full bg-primary-light blur-[120px]" />

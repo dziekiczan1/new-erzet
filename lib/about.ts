@@ -1,5 +1,10 @@
-export const aboutText = {
-  title: "O naszej firmie",
+export type AboutText = {
+  title: string;
+  paragraphs: string[];
+};
+
+export const aboutText: AboutText = {
+  title: "O firmie",
   paragraphs: [
     "eRZet specjalizuje się w projektowaniu i tworzeniu stron internetowych dla różnych branż. Skupiamy się na świadczeniu usług najwyższej jakości, dostosowanych do indywidualnych potrzeb klientów.",
 

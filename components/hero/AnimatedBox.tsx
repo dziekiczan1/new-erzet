@@ -3,6 +3,8 @@ import { motion, Variants } from "framer-motion";
 import { heroText } from "@/lib/hero";
 import Button from "@/components/ui/Button";
 import { Link } from "react-scroll";
+import Badge from "@/components/ui/Badge";
+import { Star } from "lucide-react";
 
 interface AnimatedTextProps {
   lines: string[];
@@ -32,8 +34,9 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="flex flex-col gap-4 lg:gap-8 lg:max-w-4xl"
+      className="flex flex-col gap-4 lg:gap-12 lg:max-w-4xl"
     >
+      <Badge text="Nowoczesne rozwiązania webowe" icon={Star} />
       <h1>
         {lines.map((line, i) => (
           <motion.span key={i} variants={lineVariants}>
@@ -45,19 +48,36 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
       </h1>
       <p className="max-w-xl">{heroText.description}</p>
 
-      <Link
-        to="contact"
-        smooth
-        duration={500}
-        offset={-64}
-        role="button"
-        tabIndex={0}
-        className="w-fit sm:mx-auto lg:mx-0"
-        href="#contact"
-        aria-label={`Scroll to Contact section`}
-      >
-        <Button size="lg">{heroText.cta}</Button>
-      </Link>
+      <div className="flex gap-4 lg:gap-12">
+        <Link
+          to="contact"
+          smooth
+          duration={500}
+          offset={-64}
+          role="button"
+          tabIndex={0}
+          className="w-fit sm:mx-auto lg:mx-0"
+          href="#contact"
+          aria-label={`Scroll to Contact section`}
+        >
+          <Button size="lg">{heroText.ctaMain}</Button>
+        </Link>
+        <Link
+          to="services"
+          smooth
+          duration={500}
+          offset={-64}
+          role="button"
+          tabIndex={0}
+          className="w-fit sm:mx-auto lg:mx-0"
+          href="#services"
+          aria-label={`Scroll to Services section`}
+        >
+          <Button size="lg" variant="secondary">
+            {heroText.ctaSecondary}
+          </Button>
+        </Link>
+      </div>
     </motion.div>
   );
 };

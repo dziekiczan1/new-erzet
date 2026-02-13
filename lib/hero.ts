@@ -1,4 +1,11 @@
-export const heroText = {
+export type HeroText = {
+  title: string[];
+  description: string;
+  ctaMain: string;
+  ctaSecondary: string;
+};
+
+export const heroText: HeroText = {
   title: [
     "Cyfrowa przyszłość marek",
     "zaczyna się od designu",
@@ -6,5 +13,6 @@ export const heroText = {
   ],
   description:
     "Projektujemy wydajne strony internetowe i aplikacje SPA, które łączą unikalny design z najnowszą technologią. Zadbaj o wizerunek lidera w swojej branży.",
-  cta: "Skontaktuj się",
+  ctaMain: "Skontaktuj się",
+  ctaSecondary: "Zobacz usługi",
 };
