@@ -17,15 +17,15 @@ const About = () => {
             {aboutText.title}
           </h2>
           <div className="flex flex-col-reverse lg:flex-row gap-4 lg:gap-16">
-            <div className="flex justify-center items-center flex-1 lg:h-auto max-h-[50svh] lg:max-h-none aspect-[582/505]">
-              <MotionImage
-                src="/about.webp"
-                alt="Ilustracja przedstawiająca zespół tworzący rozwiązania cyfrowe"
-                preset="zoom-in"
-                duration={2}
-                className="flex justify-center items-center lg:items-stretch w-full min-h-full"
-                imageClass="min-h-0"
-              />
+            <div className="flex justify-center items-center flex-1 lg:h-auto max-h-[50svh] lg:max-h-none aspect-[582/505] bg-[url('/about1.webp')] bg-contain bg-center bg-no-repeat">
+              {/*<MotionImage*/}
+              {/*  src="/about.webp"*/}
+              {/*  alt="Ilustracja przedstawiająca zespół tworzący rozwiązania cyfrowe"*/}
+              {/*  preset="zoom-in"*/}
+              {/*  duration={2}*/}
+              {/*  className="flex justify-center items-center lg:items-stretch w-full min-h-full"*/}
+              {/*  imageClass="min-h-0"*/}
+              {/*/>*/}
             </div>
             <div
               className="flex flex-col gap-4 flex-1 px-2 py-4 lg:p-6 bg-gradient-to-bl from-background/50 to-transparent backdrop-blur-lg

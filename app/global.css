@@ -127,7 +127,7 @@
     }
 
     header.scrolled {
-        @apply md:rounded-2xl md:my-2 lg:px-4 md:max-w-6xl md:mx-auto inset-x-4 lg:inset-x-8 lg:w-auto;
+        @apply md:rounded-2xl md:my-2 lg:px-4 md:max-w-6xl md:mx-auto md:inset-x-4 lg:inset-x-8 md:w-auto;
     }
 
     /* ========== BUTTONS ========== */
