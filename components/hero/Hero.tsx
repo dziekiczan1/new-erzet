@@ -19,7 +19,7 @@ const Hero = () => {
       </div>
       <div className="lg:flex-1 flex justify-center lg:pt-8 w-full h-full lg:max-w-[50vw]">
         <MotionImage
-          src="/hero1.webp"
+          src="/hero.webp"
           alt="Programiści tworzący nowoczesne aplikacje webowe"
           preset="zoom-in"
           priority
