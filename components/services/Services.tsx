@@ -13,7 +13,7 @@ const Services = () => {
           {servicesHeading}
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+        <div className="grid grid-cols-1 max-w-[240px] mx-auto xs:max-w-full xs:mx-0 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-8">
           {services.map((service, i) => (
             <ServiceCard key={service.title} service={service} index={i} />
           ))}

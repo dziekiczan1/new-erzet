@@ -50,7 +50,7 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
           </motion.span>
         ))}
       </h1>
-      <p className="max-w-xl">{heroText.description}</p>
+      <p className="max-w-xl text-pretty">{heroText.description}</p>
 
       <div className="flex gap-4 lg:gap-12 sm:justify-center lg:justify-start">
         <Link
