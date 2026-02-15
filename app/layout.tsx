@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Roboto } from "next/font/google";
+import { domAnimation, LazyMotion } from "framer-motion";
 
 import "./global.css";
 import Header from "@/components/header/Header";
@@ -31,19 +32,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
-      <head>
-        <link
-          rel="preload"
-          href="/hero1.webp"
-          as="image"
-          fetchPriority="high"
-          type="image/webp"
-        />
-      </head>
       <body className={`${roboto.variable} ${inter.variable} antialiased`}>
-        <Header />
-        {children}
-        <Footer />
+        <LazyMotion features={domAnimation}>
+          <Header />
+          {children}
+          <Footer />
+        </LazyMotion>
       </body>
     </html>
   );

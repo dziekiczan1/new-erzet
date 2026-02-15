@@ -1,5 +1,5 @@
 "use client";
-import { motion, Variants } from "framer-motion";
+import { m, Variants } from "framer-motion";
 import { heroText } from "@/lib/hero";
 import Button from "@/components/ui/Button";
 import { Link } from "react-scroll";
@@ -30,7 +30,7 @@ const lineVariants: Variants = {
 
 const AnimatedBox = ({ lines }: AnimatedTextProps) => {
   return (
-    <motion.div
+    <m.div
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -43,11 +43,11 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
       />
       <h1>
         {lines.map((line, i) => (
-          <motion.span key={i} variants={lineVariants}>
+          <m.span key={i} variants={lineVariants}>
             <span key={i} className={i === 0 ? "hero-text" : ""}>
               {line} <br />
             </span>
-          </motion.span>
+          </m.span>
         ))}
       </h1>
       <p className="max-w-xl text-pretty">{heroText.description}</p>
@@ -82,7 +82,7 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
           </Button>
         </Link>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 

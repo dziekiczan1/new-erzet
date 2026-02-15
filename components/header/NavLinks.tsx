@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "react-scroll";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 import { NAV_ITEMS } from "@/lib/navigation";
 
@@ -17,7 +17,7 @@ export function NavLinks({ onLinkClick, isMobile = false }: NavLinksProps) {
     return (
       <ul className="flex flex-col gap-4">
         {NAV_ITEMS.map((item, i) => (
-          <motion.li
+          <m.li
             key={item.id}
             initial={{ x: -10, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -38,7 +38,7 @@ export function NavLinks({ onLinkClick, isMobile = false }: NavLinksProps) {
             >
               {item.label}
             </Link>
-          </motion.li>
+          </m.li>
         ))}
       </ul>
     );

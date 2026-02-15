@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { ImageProps } from "next/image";
-import { motion, Variants, Transition } from "framer-motion";
+import { m, Variants, Transition } from "framer-motion";
 import clsx from "clsx";
 
 type AnimationPreset =
@@ -117,7 +117,7 @@ export default function MotionImage({
   };
 
   return (
-    <motion.div
+    <m.div
       initial="hidden"
       animate={animateImmediately ? "visible" : undefined}
       whileInView={animateImmediately ? undefined : "visible"}
@@ -138,6 +138,6 @@ export default function MotionImage({
         )}
         {...imageProps}
       />
-    </motion.div>
+    </m.div>
   );
 }

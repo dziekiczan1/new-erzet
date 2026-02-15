@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { m, Variants } from "framer-motion";
 import Link from "next/link";
 
 const Logo = () => {
@@ -22,7 +22,7 @@ const Logo = () => {
       className="font-serif text-lg font-black tracking-tight"
       aria-label="Strona główna eRZet"
     >
-      <motion.svg
+      <m.svg
         width="692"
         height="221"
         className={`w-auto h-6 md:h-8`}
@@ -49,28 +49,28 @@ const Logo = () => {
           d="M63.744 55.552C98.816 55.552 127.232 84.48 127.232 119.808C127.232 124.16 122.88 128.256 119.04 128.256H48.64C44.544 128.256 41.216 124.928 41.216 120.832C41.216 116.224 44.544 112.896 48.64 112.896H110.08C106.752 89.856 87.552 72.448 63.744 72.448C37.376 72.448 16.64 93.44 16.64 119.808C16.64 145.664 37.376 166.912 63.744 166.912C80.64 166.912 96 157.696 104.448 143.104C106.496 139.52 111.616 137.984 115.712 140.288C119.808 142.336 121.088 147.456 118.784 151.552C107.52 171.264 86.528 183.552 63.744 183.552C28.416 183.552 0 154.88 0 119.808C0 84.48 28.416 55.552 63.744 55.552Z"
           fill="black"
         />
-        <motion.path
+        <m.path
           d="M345.122 36.0002C254.856 49.7462 268.514 36.3413 323.132 99.9829"
           stroke="#D50CCE"
           strokeWidth="16"
           strokeLinecap="round"
           variants={pathVariants}
         />
-        <motion.path
+        <m.path
           d="M389.646 199.578C479.913 185.832 466.254 199.237 411.637 135.595"
           stroke="#D50CCE"
           strokeWidth="16"
           strokeLinecap="round"
           variants={pathVariants}
         />
-        <motion.path
+        <m.path
           d="M423.011 46.3553L313.105 189.969"
           stroke="#D50CCE"
           strokeWidth="16"
           strokeLinecap="round"
           variants={pathVariants}
         />
-      </motion.svg>
+      </m.svg>
     </Link>
   );
 };

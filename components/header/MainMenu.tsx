@@ -2,12 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { scrollSpy } from "react-scroll";
-import { motion, AnimatePresence } from "framer-motion";
-import { Facebook, Linkedin, Mail, Menu, Phone, X } from "lucide-react";
+import { m, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 import { NavLinks } from "@/components/header/NavLinks";
-import Logo from "@/components/header/Logo";
-import { XIcon } from "@/lib/x-icon";
 import { ContactSection } from "@/components/ui/ContactSection";
 
 const MainMenu = () => {
@@ -23,7 +21,7 @@ const MainMenu = () => {
     <>
       <NavLinks />
 
-      <motion.button
+      <m.button
         onClick={() => setOpen((prev) => !prev)}
         className="md:hidden rounded-lg p-2 hover:bg-light"
         aria-label={open ? "Zamknij menu" : "Otwórz Menu"}
@@ -31,18 +29,18 @@ const MainMenu = () => {
         aria-controls="mobile-menu"
         whileTap={{ scale: 0.9 }}
       >
-        <motion.div
+        <m.div
           initial={false}
           animate={{ rotate: open ? 90 : 0 }}
           transition={{ duration: 0.2, ease: "easeOut" }}
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </motion.div>
-      </motion.button>
+        </m.div>
+      </m.button>
 
       <AnimatePresence>
         {open && (
-          <motion.aside
+          <m.aside
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
@@ -58,7 +56,7 @@ const MainMenu = () => {
             </div>
             <div className="w-px bg-tertiary/20 mx-4" />
             <ContactSection />
-          </motion.aside>
+          </m.aside>
         )}
       </AnimatePresence>
     </>

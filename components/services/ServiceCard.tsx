@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   Code,
   Server,
@@ -34,7 +34,7 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
   const Icon = iconMap[service.icon as keyof typeof iconMap];
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.03 }}
@@ -44,9 +44,9 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
         delay: index * 0.1,
         scale: { type: "spring", stiffness: 220, damping: 18 },
       }}
-      className="group service-card-wrapper square-bevel"
+      className="group service-card-wrapper"
     >
-      <div className="service-card-inner square-bevel">
+      <div className="service-card-inner border-line-top">
         <div className="service-card-icon-wrapper">
           <Icon
             aria-hidden="true"
@@ -59,7 +59,7 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
 
         <p className="service-card-description">{service.description}</p>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 
