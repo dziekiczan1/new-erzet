@@ -1,5 +1,5 @@
 import { Facebook, Linkedin } from "lucide-react";
-import { XIcon } from "@/lib/x-icon";
+import { XIcon } from "@/components/ui/XIcon";
 
 export interface IContactInfo {
   email: string;

@@ -1,9 +1,9 @@
 import Image from "next/image";
 
+import { HERO_TEXT } from "@/lib/hero";
 import AnimatedBox from "@/components/hero/AnimatedBox";
 import { GridPattern } from "@/components/ui/Grid";
-import { HERO_TEXT } from "@/lib/hero";
-import { Divider } from "@/lib/divider";
+import { Divider } from "@/components/ui/Divider";
 
 const Hero = () => {
   return (

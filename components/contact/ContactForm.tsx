@@ -4,13 +4,14 @@ import { m } from "framer-motion";
 import { Input } from "@/components/ui/Input";
 import { formFields } from "@/lib/contact-form";
 import { useContactForm } from "@/hooks/useContactForm";
+import Button from "@/components/ui/Button";
 
 const FormField = ({ children }: { children: React.ReactNode }) => (
   <m.div
     initial={{ opacity: 0, y: 10 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.3 }}
-    className="space-y-6 lg:space-y-10 w-full xl:w-4/5 mx-auto"
+    className="space-y-4 lg:space-y-8 w-full"
   >
     {children}
   </m.div>
@@ -22,7 +23,7 @@ export const ContactForm = () => {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="relative px-4 py-6 lg:p-8 lg:max-w-3xl xl:max-w-5xl w-full glass-card"
+      className="relative lg:max-w-3xl mx-auto"
     >
       <FormField>
         {formFields.map((field) => (
@@ -39,7 +40,7 @@ export const ContactForm = () => {
 
       <div className="flex justify-center mt-6 lg:mt-8">
         {status === "idle" ? (
-          <button type="submit">Send Message</button>
+          <Button type="submit">Send Message</Button>
         ) : (
           "status"
         )}

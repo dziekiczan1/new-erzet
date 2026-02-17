@@ -1,84 +1,22 @@
-"use client";
-
-import { m } from "framer-motion";
-import {
-  ShieldCheck,
-  Code2,
-  Rocket,
-  Workflow,
-  Headphones,
-  Users,
-} from "lucide-react";
-
-const reasons = [
-  {
-    icon: ShieldCheck,
-    title: "Transparentny proces",
-    description: "Jasne etapy współpracy i stała komunikacja.",
-  },
-  {
-    icon: Code2,
-    title: "Jakość kodu",
-    description: "Modularna architektura i dobre praktyki.",
-  },
-  {
-    icon: Workflow,
-    title: "Nowoczesny stack",
-    description: "Sprawdzone technologie gotowe na produkcję.",
-  },
-  {
-    icon: Rocket,
-    title: "Skalowalność",
-    description: "Projektowanie z myślą o rozwoju produktu.",
-  },
-  {
-    icon: Headphones,
-    title: "Wsparcie",
-    description: "Pomoc po wdrożeniu i dalszy rozwój.",
-  },
-  {
-    icon: Users,
-    title: "Partnerskie podejście",
-    description: "Skupienie na celach biznesowych.",
-  },
-];
+import { WHYUS, WHYUS_HEADING } from "@/lib/why-us";
+import { WhyUsCard } from "@/components/why-us/WhyUsCard";
 
 const WhyUs = () => {
   return (
     <section
       id="why-us"
-      className="py-32 bg-gradient-to-b from-primary-light to-background"
+      className="section-wrapper lg:py-20 bg-gradient-to-b from-primary-light to-background"
+      aria-labelledby="why-us-heading"
     >
-      <div className="container-main flex flex-col gap-16 p-0">
-        <h2 className="text-center">Dlaczego my</h2>
+      <div className="container-main flex flex-col gap-8 lg:gap-16 p-0">
+        <h2 id="why-us-heading" className="text-center">
+          {WHYUS_HEADING}
+        </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reasons.map((reason, i) => {
-            const Icon = reason.icon;
-
-            return (
-              <m.div
-                key={reason.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="group service-card-wrapper"
-              >
-                <div className="service-card-inner">
-                  <div className="service-card-icon-wrapper">
-                    <Icon className="service-card-icon" />
-                  </div>
-
-                  <h3 className="service-card-title">{reason.title}</h3>
-
-                  <p className="service-card-description">
-                    {reason.description}
-                  </p>
-                </div>
-              </m.div>
-            );
-          })}
+        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-4 lg:gap-8 max-w-[240px] mx-auto xs:max-w-full xs:mx-0">
+          {WHYUS.map((reason, index) => (
+            <WhyUsCard key={reason.title} reason={reason} index={index} />
+          ))}
         </div>
       </div>
     </section>

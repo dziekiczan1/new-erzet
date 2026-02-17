@@ -23,7 +23,7 @@ export default function ProcessStep({
 
   const opacity = useTransform(localProgress, [0, 1], [0.5, 1]);
   const opacityStep = useTransform(localProgress, [0, 1], [0.2, 1]);
-  const y = useTransform(localProgress, [0, 1], [40, 0]);
+  const y = useTransform(localProgress, [0, 1], [20, 0]);
   const scale = useTransform(localProgress, [0, 1], [0.95, 1]);
   const rotate = useTransform(localProgress, [0, 1], [step.rotate ?? -5, 0]);
 

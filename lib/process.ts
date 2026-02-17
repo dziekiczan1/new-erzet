@@ -41,14 +41,14 @@ export const PROCESS_STEPS: IStep[] = [
     title: "Planowanie",
     description: "Tworzymy harmonogram, zakres prac i wycenę.",
     gradient: "from-secondary/40 via-transparent to-quaternary/40",
-    rotate: -9,
+    rotate: 9,
   },
   {
     icon: "pen",
     title: "Projekt",
     description: "Przygotowujemy makiety i finalny design.",
     gradient: "from-accent/40 via-transparent to-primary/40",
-    rotate: -4,
+    rotate: -12,
   },
   {
     icon: "code",
@@ -62,6 +62,6 @@ export const PROCESS_STEPS: IStep[] = [
     title: "Wdrożenie",
     description: "Uruchamiamy rozwiązanie i zapewniamy wsparcie.",
     gradient: "from-primary/40 via-transparent to-accent/40",
-    rotate: 11,
+    rotate: -11,
   },
 ];
