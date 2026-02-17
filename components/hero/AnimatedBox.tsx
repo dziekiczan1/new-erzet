@@ -1,6 +1,6 @@
 "use client";
 import { m, Variants } from "framer-motion";
-import { heroText } from "@/lib/hero";
+import { HERO_TEXT } from "@/lib/hero";
 import Button from "@/components/ui/Button";
 import { Link } from "react-scroll";
 import Badge from "@/components/ui/Badge";
@@ -50,7 +50,7 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
           </m.span>
         ))}
       </h1>
-      <p className="max-w-xl text-pretty">{heroText.description}</p>
+      <p className="max-w-xl text-pretty">{HERO_TEXT.description}</p>
 
       <div className="flex gap-4 lg:gap-12 sm:justify-center lg:justify-start">
         <Link
@@ -64,7 +64,7 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
           href="#contact"
           aria-label={`Nawiguj do sekcji Kontakt`}
         >
-          <Button size="lg">{heroText.ctaMain}</Button>
+          <Button size="lg">{HERO_TEXT.ctaMain}</Button>
         </Link>
         <Link
           to="services"
@@ -78,7 +78,7 @@ const AnimatedBox = ({ lines }: AnimatedTextProps) => {
           aria-label={`Nawiguj do sekcji Usługi`}
         >
           <Button size="lg" variant="secondary">
-            {heroText.ctaSecondary}
+            {HERO_TEXT.ctaSecondary}
           </Button>
         </Link>
       </div>

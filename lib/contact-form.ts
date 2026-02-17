@@ -1,0 +1,50 @@
+export type FormStatus = "idle" | "loading" | "success" | "error";
+
+export type FormFieldConfig = {
+  name: string;
+  label: string;
+  type?: string;
+  placeholder: string;
+  required?: boolean;
+  errorMessage: string;
+  textarea?: boolean;
+  rows?: number;
+  pattern?: string;
+};
+
+export const formFields: FormFieldConfig[] = [
+  {
+    name: "user_name",
+    label: "Your Name",
+    type: "text",
+    placeholder: "John Doe",
+    required: true,
+    errorMessage: "Please enter your name.",
+  },
+  {
+    name: "user_email",
+    label: "Email Address",
+    type: "email",
+    placeholder: "john.doe@example.com",
+    required: true,
+    pattern: "[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$",
+    errorMessage: "Please enter a valid email address.",
+  },
+  {
+    name: "user_subject",
+    label: "Subject",
+    type: "text",
+    placeholder: "Let us know how we can help",
+    required: true,
+    errorMessage: "Please enter a subject.",
+  },
+  {
+    name: "message",
+    label: "Your Message",
+    placeholder: "Write your message here...",
+    required: true,
+    errorMessage: "Please enter a message.",
+    textarea: true,
+    rows: 4,
+  },
+];

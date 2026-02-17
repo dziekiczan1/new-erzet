@@ -1,23 +1,27 @@
 import { Facebook, Linkedin } from "lucide-react";
 import { XIcon } from "@/lib/x-icon";
 
-interface ContactInfo {
+export interface IContactInfo {
   email: string;
   phone: string;
 }
 
-export interface ContactLink {
+export interface IContactLink {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   href: string;
   label: string;
 }
 
-export const contactInfo: ContactInfo = {
+export interface ISocialLinksProps {
+  links: IContactLink[];
+}
+
+export const CONTACT_INFO: IContactInfo = {
   email: "erzet.dev@gmail.com",
   phone: "+48 505-933-394",
 };
 
-export const links: ContactLink[] = [
+export const CONTACT_SOCIAL: IContactLink[] = [
   {
     icon: Facebook,
     href: "https://www.facebook.com/people/ERZET/100089004531475",

@@ -1,12 +1,8 @@
-import { ContactLink } from "@/lib/contact";
+import { IContactLink, ISocialLinksProps } from "@/lib/contact";
 
-interface SocialLinksProps {
-  links: ContactLink[];
-}
-
-export const SocialLinks = ({ links }: SocialLinksProps) => (
+export const SocialLinks = ({ links }: ISocialLinksProps) => (
   <nav aria-label="Social media" className={`flex gap-4`}>
-    {links.map(({ icon: Icon, href, label }: ContactLink) => (
+    {links.map(({ icon: Icon, href, label }: IContactLink) => (
       <a
         key={label}
         href={href}

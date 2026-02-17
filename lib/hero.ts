@@ -1,11 +1,11 @@
-export interface HeroText {
+export interface IHeroText {
   title: string[];
   description: string;
   ctaMain: string;
   ctaSecondary: string;
 }
 
-export const heroText: HeroText = {
+export const HERO_TEXT: IHeroText = {
   title: [
     "Cyfrowa przyszłość marek",
     "zaczyna się od designu",

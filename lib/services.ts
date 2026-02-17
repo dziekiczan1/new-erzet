@@ -1,12 +1,17 @@
-export interface Service {
+export interface IService {
   title: string;
   description: string;
   icon: string;
 }
 
-export const servicesHeading = "Nasze Usługi";
+export interface IServiceCardProps {
+  service: IService;
+  index: number;
+}
 
-export const services: Service[] = [
+export const SERVICES_HEADING = "Nasze Usługi";
+
+export const SERVICES: IService[] = [
   {
     title: "Aplikacje Webowe",
     description:

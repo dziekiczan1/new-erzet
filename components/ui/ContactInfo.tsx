@@ -1,11 +1,7 @@
 import { Mail, Phone } from "lucide-react";
+import { IContactInfo } from "@/lib/contact";
 
-interface ContactInfoProps {
-  email: string;
-  phone: string;
-}
-
-export const ContactInfo = ({ email, phone }: ContactInfoProps) => (
+export const ContactInfo = ({ email, phone }: IContactInfo) => (
   <div
     className="flex flex-col items-center gap-2 text-sm"
     aria-label="Dane kontaktowe"

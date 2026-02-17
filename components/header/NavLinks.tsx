@@ -3,14 +3,9 @@
 import { Link } from "react-scroll";
 import { m } from "framer-motion";
 
-import { NAV_ITEMS } from "@/lib/navigation";
+import { INavLinksProps, NAV_ITEMS } from "@/lib/navigation";
 
-interface NavLinksProps {
-  onLinkClick?: () => void;
-  isMobile?: boolean;
-}
-
-export function NavLinks({ onLinkClick, isMobile = false }: NavLinksProps) {
+export function NavLinks({ onLinkClick, isMobile = false }: INavLinksProps) {
   const sharedClasses = "link cursor-pointer";
 
   if (isMobile) {

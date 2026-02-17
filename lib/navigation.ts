@@ -1,9 +1,14 @@
-export interface NavItem {
+export interface INavItem {
   label: string;
   id: string;
 }
 
-export const NAV_ITEMS: readonly NavItem[] = [
+export interface INavLinksProps {
+  onLinkClick?: () => void;
+  isMobile?: boolean;
+}
+
+export const NAV_ITEMS: readonly INavItem[] = [
   { label: "Strona główna", id: "home" },
   { label: "O firmie", id: "about" },
   { label: "Usługi", id: "services" },

@@ -12,14 +12,9 @@ import {
   Workflow,
 } from "lucide-react";
 
-import type { Service } from "@/lib/services";
+import { IServiceCardProps } from "@/lib/services";
 
-type ServiceCardProps = {
-  service: Service;
-  index: number;
-};
-
-const ServiceCard = ({ service, index }: ServiceCardProps) => {
+const ServiceCard = ({ service, index }: IServiceCardProps) => {
   const iconMap = {
     code: Code,
     server: Server,
