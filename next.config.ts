@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   experimental: {
     inlineCss: true,
     cssChunking: true,
+    optimizePackageImports: ["framer-motion"],
   },
 };
 

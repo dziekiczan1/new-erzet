@@ -16,15 +16,27 @@ const Hero = () => {
         <AnimatedBox lines={HERO_TEXT.title} />
       </div>
       <div className="relative flex justify-center w-full lg:max-w-[50vw] lg:pt-8 lg:flex-1 aspect-[32/25] max-h-[50svh] lg:max-h-svh">
-        <Image
-          src="/hero.svg"
-          alt=""
-          priority
-          fetchPriority="high"
-          aria-hidden="true"
-          fill
-          className="w-full h-auto object-contain"
-        />
+        <picture>
+          <source media="(max-width: 1023px)" srcSet="/hero_mobile.svg" />
+          <Image
+            src="/hero.svg"
+            alt=""
+            priority
+            fetchPriority="high"
+            aria-hidden="true"
+            fill
+            className="w-full h-auto object-contain"
+          />
+        </picture>
+        {/*<Image*/}
+        {/*  src="/hero.svg"*/}
+        {/*  alt=""*/}
+        {/*  priority*/}
+        {/*  fetchPriority="high"*/}
+        {/*  aria-hidden="true"*/}
+        {/*  fill*/}
+        {/*  className="w-full h-auto object-contain"*/}
+        {/*/>*/}
       </div>
       <Divider className="absolute left-0 bottom-0 right-0 w-full" />
     </section>
