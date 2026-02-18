@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { m } from "framer-motion";
 
-import { FormStatus } from "@/types/form";
+import { FormStatus } from "@/lib/contact-form";
 
 export const StatusIndicator = ({ status }: { status: FormStatus }) => {
   const statusConfig = {
