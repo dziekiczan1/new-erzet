@@ -25,11 +25,7 @@ const Logo = ({ variant = "black" }: ILogoProps) => {
   };
 
   return (
-    <Link
-      href="#home"
-      className="font-serif text-lg font-black tracking-tight"
-      aria-label="Strona główna eRZet"
-    >
+    <Link href="#home" aria-label="Strona główna eRZet">
       <m.svg
         width="692"
         height="221"

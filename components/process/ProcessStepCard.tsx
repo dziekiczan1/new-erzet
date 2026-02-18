@@ -36,7 +36,7 @@ export const ProcessStepCard = ({
           <div className="flex w-full justify-center mb-4 lg:mb-0 lg:hidden">
             <Icon className="w-6 h-6 text-light/80 drop-shadow-md transition-transform duration-300 group-hover:scale-105" />
           </div>
-          <h3 className="service-card-title text-primary/85 uppercase tracking-widest font-extrabold">
+          <h3 className="service-card-title text-primary/85 uppercase tracking-widest">
             {title}
           </h3>
           <p className="service-card-description text-light text-pretty">

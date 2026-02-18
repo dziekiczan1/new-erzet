@@ -9,15 +9,14 @@ import Footer from "@/components/footer/Footer";
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
-  display: "swap",
-  preload: true,
+  weight: ["600", "700", "900"],
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  display: "swap",
-  preload: true,
+  weight: ["400", "600", "900"],
+  preload: false,
 });
 
 export const metadata: Metadata = {
