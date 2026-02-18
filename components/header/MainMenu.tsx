@@ -49,7 +49,8 @@ const MainMenu = () => {
             id={`mobile-menu`}
             aria-modal
             aria-label="Nawigacja mobilna"
-            className="absolute top-16 left-0 right-0 rounded-2xl bg-background/95 backdrop-blur-sm ring-1 ring-black/10 px-4 py-4 mx-2 shadow-sm md:hidden flex justify-between"
+            className="absolute top-16 left-0 right-0 rounded-2xl bg-background/95 backdrop-blur-sm ring-1 ring-black/10 px-4 py-4 mx-2 shadow-sm md:hidden
+            flex flex-col xxs:flex-row justify-between"
           >
             <div className="flex-1">
               <NavLinks isMobile onLinkClick={() => setOpen(false)} />

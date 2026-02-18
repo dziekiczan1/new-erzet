@@ -1,6 +1,6 @@
 "use client";
 
-import { m } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import {
   Code,
   Server,
@@ -25,14 +25,14 @@ const ServiceCard = ({ service, index }: IServiceCardProps) => {
     cloud: Cloud,
     workflow: Workflow,
   };
-
+  const shouldReduceMotion = useReducedMotion();
   const Icon = iconMap[service.icon as keyof typeof iconMap];
 
   return (
     <m.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.03 }}
+      initial={shouldReduceMotion ? undefined : { opacity: 0, y: 30 }}
+      whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+      whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{
         duration: 0.4,

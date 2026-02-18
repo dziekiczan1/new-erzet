@@ -3,6 +3,7 @@
 :root {
     /* Color Palette*/
     --primary: oklch(0.62 0.28 330);
+    --primary-contrast: oklch(0.77 0.28 330);
     --primary-light: oklch(0.87 0.05 307);
     --secondary: oklch(0.42 0.15 280);
     --tertiary: oklch(0.48 0.18 290);
@@ -14,6 +15,7 @@
 @theme inline {
     /* Color Theme */
     --color-primary: var(--primary);
+    --color-primary-contrast: var(--primary-contrast);
     --color-primary-light: var(--primary-light);
     --color-secondary: var(--secondary);
     --color-tertiary: var(--tertiary);
@@ -26,7 +28,8 @@
     --font-body: var(--font-inter);
 
     /* Breakpoints */
-    --breakpoint-xs: 480px;
+    --breakpoint-xxs: 24.625rem; /* 394px */
+    --breakpoint-xs: 30rem;
 }
 
 @layer base {
@@ -234,6 +237,10 @@
 
     .border-line-bottom {
         @apply after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-gradient-to-l after:from-tertiary after:to-primary
+    }
+
+    .footer-contact {
+        @apply text-background text-sm;
     }
 
     .input-field {

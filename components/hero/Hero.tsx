@@ -15,17 +15,18 @@ const Hero = () => {
       <div className="lg:flex-1 z-10 lg:pt-8 sm:text-center lg:text-left">
         <AnimatedBox lines={HERO_TEXT.title} />
       </div>
-      <div className="relative flex justify-center w-full lg:max-w-[50vw] lg:pt-8 lg:flex-1 aspect-[32/25] max-h-[50svh] lg:max-h-svh">
-        <picture>
+      <div className="relative isolate flex justify-center w-full lg:max-w-[50vw] lg:pt-8 lg:flex-1 aspect-[32/25] max-h-[50svh] lg:max-h-svh">
+        <picture className="absolute inset-0">
           <source media="(max-width: 1023px)" srcSet="/hero_mobile.svg" />
-          <Image
+          <source media="(min-width: 1024px)" srcSet="/hero.svg" />
+          <img
             src="/hero.svg"
+            srcSet="/hero_mobile.svg 1023w, /hero.svg 1920w"
+            sizes="(max-width: 1023px) 100vw, 50vw"
             alt=""
-            priority
-            fetchPriority="high"
             aria-hidden="true"
-            fill
-            className="w-full h-auto object-contain"
+            className="absolute inset-0 w-full h-full object-contain"
+            loading="eager"
           />
         </picture>
       </div>

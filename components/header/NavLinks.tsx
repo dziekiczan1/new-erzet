@@ -23,7 +23,7 @@ export function NavLinks({ onLinkClick, isMobile = false }: INavLinksProps) {
               spy
               smooth
               duration={500}
-              offset={0}
+              offset={-56}
               activeClass="link-active"
               onClick={onLinkClick}
               className={sharedClasses}

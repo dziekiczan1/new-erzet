@@ -78,6 +78,10 @@ const Input = React.forwardRef<
             ref={ref as React.Ref<HTMLTextAreaElement>}
             onBlur={handleBlur}
             onChange={handleChange}
+            aria-describedby={
+              !isValid && errorMessage ? `${name}-error` : undefined
+            }
+            aria-invalid={!isValid}
             {...props}
           />
         ) : (
@@ -90,12 +94,23 @@ const Input = React.forwardRef<
             ref={ref as React.Ref<HTMLInputElement>}
             onBlur={handleBlur}
             onChange={handleChange}
+            aria-describedby={
+              !isValid && errorMessage ? `${name}-error` : undefined
+            }
+            aria-invalid={!isValid}
             {...props}
           />
         )}
 
         {!isValid && errorMessage && (
-          <p className="text-xs text-red-500">{errorMessage}</p>
+          <p
+            id={`${name}-error`}
+            role="alert"
+            aria-live="polite"
+            className="text-xs text-red-500"
+          >
+            {errorMessage}
+          </p>
         )}
       </div>
     );

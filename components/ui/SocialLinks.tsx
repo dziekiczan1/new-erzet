@@ -9,7 +9,7 @@ export const SocialLinks = ({ links }: ISocialLinksProps) => (
         target="_blank"
         rel="noopener noreferrer"
         aria-label={label}
-        className="relative w-10 h-10 flex items-center justify-center rounded-xl
+        className="relative w-10 h-10 flex items-center justify-center rounded-xl bg-background
         bg-gradient-to-br from-primary/20 via-transparent to-tertiary/30 shadow-md border border-tertiary/40"
       >
         <Icon

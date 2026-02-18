@@ -26,7 +26,7 @@ const Process = () => {
       <GridPattern variant="bottom-right" />
 
       <div className="container-main lg:max-w-none flex flex-col gap-8 lg:gap-16 p-0">
-        <h2 id="about-heading" className="mx-auto text-background lg:mb-12">
+        <h2 id="process-heading" className="mx-auto text-background lg:mb-12">
           {PROCESS_HEADING}
         </h2>
         <div className="relative" ref={ref}>

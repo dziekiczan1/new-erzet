@@ -1,10 +1,11 @@
 "use client";
-import { m } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 
 import { ABOUT_TEXT } from "@/lib/about";
 import Image from "next/image";
 
 const About = () => {
+  const shouldReduceMotion = useReducedMotion();
   return (
     <section
       id="about"
@@ -32,8 +33,8 @@ const About = () => {
                 {ABOUT_TEXT.paragraphs.map((paragraph, i) => (
                   <m.p
                     key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+                    whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: i * 0.2 }}
                     className="leading-relaxed text-pretty"
                   >

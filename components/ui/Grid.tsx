@@ -28,7 +28,7 @@ export function GridPattern({
   variant = "top-right",
   ...props
 }: GridPatternProps) {
-  const id = useId();
+  const id = "grid-pattern";
   const variantClass = VARIANTS[variant] ?? VARIANTS["top-right"];
 
   return (

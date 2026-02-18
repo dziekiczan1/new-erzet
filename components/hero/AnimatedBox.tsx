@@ -1,5 +1,5 @@
 "use client";
-import { m, Variants } from "framer-motion";
+import { m, useReducedMotion, Variants } from "framer-motion";
 import { HERO_TEXT } from "@/lib/hero";
 import Button from "@/components/ui/Button";
 import { Link } from "react-scroll";
@@ -29,17 +29,19 @@ const lineVariants: Variants = {
 };
 
 const AnimatedBox = ({ lines }: AnimatedTextProps) => {
+  const shouldReduceMotion = useReducedMotion();
   return (
     <m.div
-      variants={containerVariants}
+      variants={shouldReduceMotion ? {} : containerVariants}
       initial="hidden"
-      animate="visible"
+      animate={shouldReduceMotion ? undefined : "visible"}
       className="flex flex-col gap-4 lg:gap-12 lg:max-w-4xl"
     >
       <Badge
         text="Nowoczesne rozwiązania webowe"
         icon={Star}
         className="sm:mx-auto lg:mx-0 flex"
+        aria-hidden="true"
       />
       <h1>
         {lines.map((line, i) => (

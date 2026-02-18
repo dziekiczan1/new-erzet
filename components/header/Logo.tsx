@@ -7,6 +7,7 @@ export type LogoVariant = "black" | "white";
 
 export interface ILogoProps {
   variant?: LogoVariant;
+  footer?: boolean;
 }
 
 const Logo = ({ variant = "black" }: ILogoProps) => {

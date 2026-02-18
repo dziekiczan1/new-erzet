@@ -5,7 +5,7 @@ export function Navbar() {
   return (
     <nav
       className="flex items-center justify-between"
-      aria-label={`Main navigation`}
+      aria-label={`Główne menu nawigacyjne`}
     >
       <Logo />
       <MainMenu />

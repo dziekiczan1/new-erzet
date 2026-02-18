@@ -4,6 +4,7 @@ import { XIcon } from "@/components/ui/XIcon";
 export interface IContactInfo {
   email: string;
   phone: string;
+  footer?: boolean;
 }
 
 export interface IContactLink {

@@ -1,6 +1,6 @@
 "use client";
 
-import { m } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
@@ -8,22 +8,26 @@ import { StatusIndicator } from "@/components/ui/StatusIndicator";
 import { useContactForm } from "@/hooks/useContactForm";
 import { CONTACT_CTA, formFields } from "@/lib/contact-form";
 
-const FormField = ({ children }: { children: React.ReactNode }) => (
-  <m.div
-    initial={{ opacity: 0, y: 10 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.3 }}
-    className="space-y-4 lg:space-y-8 w-full"
-  >
-    {children}
-  </m.div>
-);
+const FormField = ({ children }: { children: React.ReactNode }) => {
+  const shouldReduceMotion = useReducedMotion();
+  return (
+    <m.div
+      initial={shouldReduceMotion ? undefined : { opacity: 0, y: 10 }}
+      whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className="space-y-4 lg:space-y-8 w-full"
+    >
+      {children}
+    </m.div>
+  );
+};
 
 export const ContactForm = () => {
   const { formRef, status, handleSubmit } = useContactForm();
   return (
     <form
       ref={formRef}
+      role="form"
       onSubmit={handleSubmit}
       className="relative w-full lg:max-w-4/5 mx-auto"
     >

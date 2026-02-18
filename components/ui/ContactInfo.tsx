@@ -1,7 +1,7 @@
 import { Mail, Phone } from "lucide-react";
 import { IContactInfo } from "@/lib/contact";
 
-export const ContactInfo = ({ email, phone }: IContactInfo) => (
+export const ContactInfo = ({ email, phone, footer }: IContactInfo) => (
   <div
     className="flex flex-col items-center gap-2 text-sm"
     aria-label="Dane kontaktowe"
@@ -17,7 +17,7 @@ export const ContactInfo = ({ email, phone }: IContactInfo) => (
         className="h-4 w-4 text-primary"
         aria-label={`Zadzwoń pod numer ${phone}`}
       />
-      <span>{email}</span>
+      <span className={footer ? "text-background" : ""}>{email}</span>
     </a>
     <a
       href={`tel:${phone}`}
@@ -28,7 +28,7 @@ export const ContactInfo = ({ email, phone }: IContactInfo) => (
         focusable="false"
         className="h-4 w-4 text-primary"
       />
-      <span>{phone}</span>
+      <span className={footer ? "text-background" : ""}>{phone}</span>
     </a>
   </div>
 );

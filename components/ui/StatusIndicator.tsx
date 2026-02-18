@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { m } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 
 import { FormStatus } from "@/lib/contact-form";
 
@@ -22,23 +22,26 @@ export const StatusIndicator = ({ status }: { status: FormStatus }) => {
       color: "text-red-500",
     },
   } as const;
-
+  const shouldReduceMotion = useReducedMotion();
   if (status === "idle") return null;
 
   const currentStatus = statusConfig[status];
 
   return (
     <m.div
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
+      role="status"
+      aria-live="polite"
+      initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.5 }}
+      animate={shouldReduceMotion ? {} : { opacity: 1, scale: 1 }}
       transition={{ duration: 0.3 }}
       className="flex flex-col items-center gap-2"
     >
       <Image
         src={`./icons/${currentStatus.icon}`}
-        alt={status}
+        alt=""
         width={34}
         height={34}
+        aria-hidden="true"
         className={status === "loading" ? "animate-spin" : ""}
       />
       <p className={`${currentStatus.color} text-xs`}>{currentStatus.text}</p>
