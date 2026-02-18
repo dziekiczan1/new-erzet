@@ -1,5 +1,6 @@
 import { Divider } from "@/components/ui/Divider";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { CONTACT_HEADING } from "@/lib/contact-form";
 
 const Contact = () => {
   return (
@@ -18,7 +19,7 @@ const Contact = () => {
           fill="oklch(0.98 0.01 300)"
         />
         <h2 id="contact-heading" className="mx-auto text-background lg:mb-8">
-          Kontakt
+          {CONTACT_HEADING}
         </h2>
         <ContactForm />
       </div>

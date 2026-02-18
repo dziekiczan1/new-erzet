@@ -1,16 +1,106 @@
 import * as React from "react";
 
-function Input({ type, ...props }: React.ComponentProps<"input">) {
-  return (
-    <input
-      type={type}
-      data-slot="input"
-      className="aria-invalid:ring-3 aria-invalid:ring-destructive/20 aria-invalid:border-destructive disabled:bg-foreground/50
-      px-4 h-10 rounded-lg border border-primary/80 bg-transparent text-sm text-light placeholder:text-light/80 w-full outline-none
-      disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
-      {...props}
-    />
-  );
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
+  label?: string;
+  textarea?: boolean;
+  rows?: number;
+  name: string;
+  required?: boolean;
+  pattern?: string;
+  errorMessage?: string;
 }
 
-export { Input };
+const Input = React.forwardRef<
+  HTMLInputElement | HTMLTextAreaElement,
+  InputProps
+>(
+  (
+    {
+      label,
+      name,
+      textarea = false,
+      rows,
+      required,
+      pattern,
+      errorMessage,
+      ...props
+    },
+    ref,
+  ) => {
+    const [isValid, setIsValid] = React.useState(true);
+
+    const handleBlur = (
+      e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => {
+      validateInput(e.target);
+    };
+    const handleChange = (
+      e:
+        | React.ChangeEvent<HTMLInputElement>
+        | React.ChangeEvent<HTMLTextAreaElement>,
+    ) => {
+      validateInput(e.target);
+      if (props.onChange) props.onChange(e);
+    };
+
+    const validateInput = (target: HTMLInputElement | HTMLTextAreaElement) => {
+      if (required && !target.value) {
+        setIsValid(false);
+        return;
+      }
+      if (pattern && !new RegExp(pattern).test(target.value)) {
+        setIsValid(false);
+        return;
+      }
+      setIsValid(true);
+    };
+
+    return (
+      <div className="flex flex-col gap-2">
+        {label && (
+          <label
+            htmlFor={name}
+            className="text-xs font-semibold tracking-wide uppercase text-primary/80"
+          >
+            {label}
+            {required && <span className="text-primary ml-1">*</span>}
+          </label>
+        )}
+
+        {textarea ? (
+          <textarea
+            id={name}
+            name={name}
+            rows={rows}
+            required={required}
+            className={`input-field h-auto resize-none`}
+            ref={ref as React.Ref<HTMLTextAreaElement>}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            {...props}
+          />
+        ) : (
+          <input
+            id={name}
+            name={name}
+            pattern={pattern}
+            required={required}
+            className={`input-field`}
+            ref={ref as React.Ref<HTMLInputElement>}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            {...props}
+          />
+        )}
+
+        {!isValid && errorMessage && (
+          <p className="text-xs text-red-500">{errorMessage}</p>
+        )}
+      </div>
+    );
+  },
+);
+
+Input.displayName = "Input";
+export default Input;

@@ -1,10 +1,12 @@
 "use client";
 
 import { m } from "framer-motion";
-import { Input } from "@/components/ui/Input";
-import { formFields } from "@/lib/contact-form";
-import { useContactForm } from "@/hooks/useContactForm";
+
+import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
+import { StatusIndicator } from "@/components/ui/StatusIndicator";
+import { useContactForm } from "@/hooks/useContactForm";
+import { CONTACT_CTA, formFields } from "@/lib/contact-form";
 
 const FormField = ({ children }: { children: React.ReactNode }) => (
   <m.div
@@ -23,26 +25,32 @@ export const ContactForm = () => {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="relative lg:max-w-3xl mx-auto"
+      className="relative w-full lg:max-w-4/5 mx-auto"
     >
       <FormField>
         {formFields.map((field) => (
           <Input
             key={field.name}
             name={field.name}
+            label={field.label}
             type={field.type}
             placeholder={field.placeholder}
             required={field.required}
+            errorMessage={field.errorMessage}
             pattern={field.pattern}
+            textarea={field.textarea}
+            rows={field.rows}
           />
         ))}
       </FormField>
 
       <div className="flex justify-center mt-6 lg:mt-8">
         {status === "idle" ? (
-          <Button type="submit">Send Message</Button>
+          <Button type="submit" size="lg">
+            {CONTACT_CTA}
+          </Button>
         ) : (
-          "status"
+          <StatusIndicator status={status} />
         )}
       </div>
     </form>

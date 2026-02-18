@@ -12,38 +12,42 @@ export type FormFieldConfig = {
   pattern?: string;
 };
 
+export const CONTACT_HEADING = "Kontakt";
+
+export const CONTACT_CTA = "Wyślij wiadomość";
+
 export const formFields: FormFieldConfig[] = [
   {
     name: "user_name",
-    label: "Your Name",
+    label: "Imię i Nazwisko",
     type: "text",
-    placeholder: "John Doe",
+    placeholder: "np. Jan Kowalski",
     required: true,
-    errorMessage: "Please enter your name.",
+    errorMessage: "Proszę podać swoje imię i nazwisko.",
   },
   {
     name: "user_email",
-    label: "Email Address",
+    label: "Adres Email",
     type: "email",
-    placeholder: "john.doe@example.com",
+    placeholder: "jan.kowalski@mail.com",
     required: true,
     pattern: "[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$",
-    errorMessage: "Please enter a valid email address.",
+    errorMessage: "Proszę podać poprawny adres email.",
   },
   {
     name: "user_subject",
-    label: "Subject",
+    label: "Temat",
     type: "text",
-    placeholder: "Let us know how we can help",
+    placeholder: "Temat wiadomości",
     required: true,
-    errorMessage: "Please enter a subject.",
+    errorMessage: "Proszę podać temat wiadomości.",
   },
   {
     name: "message",
-    label: "Your Message",
-    placeholder: "Write your message here...",
+    label: "Wiadomość",
+    placeholder: "Napisz swoją wiadomość tutaj...",
     required: true,
-    errorMessage: "Please enter a message.",
+    errorMessage: "Proszę wpisać treść wiadomości.",
     textarea: true,
     rows: 4,
   },
