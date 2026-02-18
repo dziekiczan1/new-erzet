@@ -28,15 +28,6 @@ const Hero = () => {
             className="w-full h-auto object-contain"
           />
         </picture>
-        {/*<Image*/}
-        {/*  src="/hero.svg"*/}
-        {/*  alt=""*/}
-        {/*  priority*/}
-        {/*  fetchPriority="high"*/}
-        {/*  aria-hidden="true"*/}
-        {/*  fill*/}
-        {/*  className="w-full h-auto object-contain"*/}
-        {/*/>*/}
       </div>
       <Divider className="absolute left-0 bottom-0 right-0 w-full" />
     </section>
