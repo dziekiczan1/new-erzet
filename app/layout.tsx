@@ -1,21 +1,53 @@
 import type { Metadata } from "next";
-import { Inter, Roboto } from "next/font/google";
 import { domAnimation, LazyMotion } from "framer-motion";
+import localFont from "next/font/local";
 
 import "./global.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 
-const roboto = Roboto({
+const roboto = localFont({
+  src: [
+    {
+      path: "./fonts/roboto/roboto-600.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "./fonts/roboto/roboto-700.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "./fonts/roboto/roboto-900.woff2",
+      weight: "900",
+      style: "normal",
+    },
+  ],
   variable: "--font-roboto",
-  subsets: ["latin"],
-  weight: ["600", "700", "900"],
+  display: "swap",
 });
 
-const inter = Inter({
+const inter = localFont({
+  src: [
+    {
+      path: "./fonts/inter/inter-400.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/inter/inter-600.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "./fonts/inter/inter-900.woff2",
+      weight: "900",
+      style: "normal",
+    },
+  ],
   variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "600", "900"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
