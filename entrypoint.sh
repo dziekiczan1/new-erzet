@@ -1,18 +1,29 @@
 #!/bin/sh
 set -e
 
-echo "Downloading secrets from Infisical..."
+echo "Loading secrets from Infisical..."
 
-export INFISICAL_TOKEN="$INFISICAL_SERVICE_TOKEN"
+export INFISICAL_MACHINE_CLIENT_ID=$(cat /run/secrets/infisical_client_id 2>/dev/null || echo "")
+export INFISICAL_MACHINE_CLIENT_SECRET=$(cat /run/secrets/infisical_client_secret 2>/dev/null || echo "")
 
-eval $(infisical export \
-  --env=prod \
-  --project-slug=new-e-r-zet-0q-vd \
-  --token="$INFISICAL_TOKEN" \
-  --format=dotenv \
-  | grep -v '^#' \
-  | sed 's/^/export /')
+if [ -z "$INFISICAL_MACHINE_CLIENT_ID" ] || [ -z "$INFISICAL_MACHINE_CLIENT_SECRET" ]; then
+  echo "Błąd: Brakuje INFISICAL_MACHINE_CLIENT_ID lub INFISICAL_MACHINE_CLIENT_SECRET w /run/secrets"
+  exit 1
+fi
 
-echo "Secrets downloaded and environment variables set. Starting the server..."
+echo "Logging in to Infisical..."
 
-exec node server.js
+export INFISICAL_TOKEN=$(infisical login \
+  --method=universal-auth \
+  --client-id="$INFISICAL_MACHINE_CLIENT_ID" \
+  --client-secret="$INFISICAL_MACHINE_CLIENT_SECRET" \
+  --plain --silent)
+
+echo "Successfully logged in to Infisical. Starting the application..."
+
+exec infisical run \
+  --token "$INFISICAL_TOKEN" \
+  --projectId "new-e-r-zet-0q-vd" \
+  --env "prod" \
+  --domain "https://secrets.erzet.dev" \
+  -- node server.js

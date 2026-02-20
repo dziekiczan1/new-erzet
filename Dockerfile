@@ -26,8 +26,11 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
-RUN apk add --no-cache curl bash && \
-    curl -sSL https://raw.githubusercontent.com/Infisical/infisical/main/scripts/install.sh | bash
+RUN apk add --no-cache curl tar && \
+    curl -sSL -o infisical.tar.gz https://github.com/Infisical/infisical/releases/latest/download/infisical_Linux_arm64.tar.gz && \
+    tar -xzf infisical.tar.gz -C /usr/local/bin && \
+    chmod +x /usr/local/bin/infisical && \
+    rm infisical.tar.gz
 
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
