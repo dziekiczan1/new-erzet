@@ -22,7 +22,7 @@ ENV NODE_ENV=production
 ENV PORT=3011
 ENV HOSTNAME="0.0.0.0"
 
-COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/next.config.ts ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
