@@ -26,9 +26,11 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
-RUN apk add --no-cache curl tar && \
-    curl -sSL -o infisical.tar.gz https://github.com/Infisical/infisical/releases/latest/download/infisical_Linux_arm64.tar.gz && \
-    tar -xzf infisical.tar.gz -C /usr/local/bin && \
+RUN apk add --no-cache curl tar jq && \
+    INFISICAL_VERSION=$(curl -s https://api.github.com/repos/Infisical/cli/releases/latest | jq -r .tag_name) && \
+    curl -L -o infisical.tar.gz https://github.com/Infisical/cli/releases/download/${INFISICAL_VERSION}/infisical_${INFISICAL_VERSION#v}_Linux_arm64.tar.gz && \
+    tar -xzf infisical.tar.gz infisical && \
+    mv infisical /usr/local/bin/infisical && \
     chmod +x /usr/local/bin/infisical && \
     rm infisical.tar.gz
 
