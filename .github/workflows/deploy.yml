@@ -23,11 +23,11 @@ jobs:
       - name: Fetch secrets from Infisical
         uses: Infisical/secrets-action@v1.0.9
         with:
-        method: "oidc"
-        identity-id: "e5fd6f74-448d-4d6b-888c-d1c565df0f41"
-        domain: "https://secrets.erzet.dev"
-        env-slug: "prod"
-        project-slug: "new-e-r-zet-0q-vd"
+          method: "oidc"
+          identity-id: "e5fd6f74-448d-4d6b-888c-d1c565df0f41"
+          domain: "https://secrets.erzet.dev"
+          env-slug: "prod"
+          project-slug: "new-e-r-zet-0q-vd"
 
       - name: Cache pnpm store
         uses: actions/cache@v4
