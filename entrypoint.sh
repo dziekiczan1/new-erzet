@@ -13,7 +13,7 @@ if [ -z "$INFISICAL_MACHINE_CLIENT_ID" ] || [ -z "$INFISICAL_MACHINE_CLIENT_SECR
   exit 1
 fi
 
-export PROJECT_ID="new-e-r-zet-0q-vd"
+export PROJECT_ID=c6cf6722-5f73-4fc0-bf05-64053cbbc092
 export INFISICAL_SECRET_ENV=prod
 export INFISICAL_API_URL=https://secrets.erzet.dev
 
