@@ -22,12 +22,17 @@ ENV NODE_ENV=production
 ENV PORT=3011
 ENV HOSTNAME="0.0.0.0"
 
-COPY --from=builder /app/next.config.ts ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
+RUN apk add --no-cache curl bash && \
+    curl -sSL https://raw.githubusercontent.com/Infisical/infisical/main/scripts/install.sh | bash
+
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
 USER node
 EXPOSE 3011
 
-CMD ["node", "server.js"]
+ENTRYPOINT ["/app/entrypoint.sh"]
