@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
     cssChunking: true,
     optimizePackageImports: ["framer-motion"],
   },
+  output: "standalone",
 };
 
 export default nextConfig;
