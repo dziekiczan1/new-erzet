@@ -8,6 +8,8 @@ export INFISICAL_MACHINE_CLIENT_SECRET=$(cat /run/secrets/infisical_secret 2>/de
 
 if [ -z "$INFISICAL_MACHINE_CLIENT_ID" ] || [ -z "$INFISICAL_MACHINE_CLIENT_SECRET" ]; then
   echo "Błąd: Brakuje INFISICAL_MACHINE_CLIENT_ID lub INFISICAL_MACHINE_CLIENT_SECRET w /run/secrets"
+  echo "Zawartość /run/secrets:"
+  ls -l /run/secrets/ 2>/dev/null || echo "(katalog niedostępny)"
   exit 1
 fi
 
