@@ -32,7 +32,7 @@ RUN apk add --no-cache curl tar jq && \
     tar -xzf infisical.tar.gz infisical-cli && \
     mv infisical-cli /usr/local/bin/infisical && \
     chmod +x /usr/local/bin/infisical && \
-    rm infisical.tar.gz \
+    rm infisical.tar.gz
 
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
