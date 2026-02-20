@@ -13,19 +13,13 @@ if [ -z "$INFISICAL_MACHINE_CLIENT_ID" ] || [ -z "$INFISICAL_MACHINE_CLIENT_SECR
   exit 1
 fi
 
+export PROJECT_ID="new-e-r-zet-0q-vd"
+export INFISICAL_SECRET_ENV=prod
+export INFISICAL_API_URL=https://secrets.erzet.dev
+
 echo "Logging in to Infisical..."
 
-export INFISICAL_TOKEN=$(infisical login \
-  --method=universal-auth \
-  --client-id="$INFISICAL_MACHINE_CLIENT_ID" \
-  --client-secret="$INFISICAL_MACHINE_CLIENT_SECRET" \
-  --plain --silent)
-
+export INFISICAL_TOKEN=$(infisical login --method=universal-auth --client-id=$INFISICAL_MACHINE_CLIENT_ID --client-secret=$INFISICAL_MACHINE_CLIENT_SECRET --domain $INFISICAL_API_URL --plain --silent)
 echo "Successfully logged in to Infisical. Starting the application..."
+exec infisical run --token $INFISICAL_TOKEN --projectId $PROJECT_ID --env $INFISICAL_SECRET_ENV --domain $INFISICAL_API_URL -- node server.js
 
-exec infisical run \
-  --token "$INFISICAL_TOKEN" \
-  --projectId "new-e-r-zet-0q-vd" \
-  --env "prod" \
-  --domain "https://secrets.erzet.dev" \
-  -- node server.js
