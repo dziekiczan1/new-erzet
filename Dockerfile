@@ -18,6 +18,12 @@ RUN pnpm build
 FROM base AS runner
 WORKDIR /app
 
+ARG NEXT_PUBLIC_CONTACT_SERVICE
+ARG NEXT_PUBLIC_CONTACT_KEY
+
+ENV NEXT_PUBLIC_CONTACT_SERVICE=$NEXT_PUBLIC_CONTACT_SERVICE
+ENV NEXT_PUBLIC_CONTACT_KEY=$NEXT_PUBLIC_CONTACT_KEY
+
 ENV NODE_ENV=production
 ENV PORT=3011
 ENV HOSTNAME="0.0.0.0"
@@ -26,15 +32,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
-RUN apk add --no-cache nodejs npm && \
-    npm install -g @infisical/cli && \
-    npm cache clean --force && \
-    apk del npm nodejs
-
-COPY entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
-
 USER node
 EXPOSE 3011
 
-ENTRYPOINT ["/app/entrypoint.sh"]
+CMD ["node", "server.js"]
