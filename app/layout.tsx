@@ -67,6 +67,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Piotr", url: "https://erzet.dev" }],
   creator: "Piotr",
   publisher: "eRZet",
+  alternates: {
+    canonical: "https://erzet.dev",
+  },
   openGraph: {
     title: "eRZet – Strony i aplikacje webowe na najwyższym poziomie",
     description:
@@ -91,11 +94,11 @@ export const metadata: Metadata = {
     images: ["/og-image.webp"],
   },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
