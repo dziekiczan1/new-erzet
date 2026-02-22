@@ -14,12 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
+          cache: 'pnpm'
 
       - name: Fetch secrets from Infisical
         uses: Infisical/secrets-action@v1.0.9
@@ -34,15 +35,6 @@ jobs:
         run: |
           echo "CONTACT_SERVICE: ${{ env.NEXT_PUBLIC_CONTACT_SERVICE }}"
           echo "CONTACT_KEY length: ${#NEXT_PUBLIC_CONTACT_KEY}"
-
-      - name: Install pnpm
-        run: npm install -g pnpm@latest
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build Next.js
-        run: pnpm build
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
