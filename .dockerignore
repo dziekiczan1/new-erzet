@@ -53,7 +53,7 @@ test-results/
 *.log
 
 # Environment variables (only commit template files)
-.env
+.env.local
 .env*.local
 .env.development
 .env.test

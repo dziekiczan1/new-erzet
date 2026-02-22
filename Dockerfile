@@ -11,12 +11,6 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
 FROM base AS builder
 WORKDIR /app
 
-ARG NEXT_PUBLIC_CONTACT_SERVICE
-ARG NEXT_PUBLIC_CONTACT_KEY
-
-ENV NEXT_PUBLIC_CONTACT_SERVICE=$NEXT_PUBLIC_CONTACT_SERVICE
-ENV NEXT_PUBLIC_CONTACT_KEY=$NEXT_PUBLIC_CONTACT_KEY
-
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN corepack enable && corepack prepare pnpm@latest --activate

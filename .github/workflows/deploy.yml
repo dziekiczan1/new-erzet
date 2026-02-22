@@ -63,6 +63,3 @@ jobs:
           platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          build-args: |
-            NEXT_PUBLIC_CONTACT_SERVICE=${{ env.NEXT_PUBLIC_CONTACT_SERVICE }}
-            NEXT_PUBLIC_CONTACT_KEY=${{ env.NEXT_PUBLIC_CONTACT_KEY }}

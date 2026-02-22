@@ -1,49 +1,35 @@
 import { FormEvent, useRef, useState } from "react";
 import { FormStatus } from "@/lib/contact-form";
-import emailjs from "@emailjs/browser";
+import { sendContactEmail } from "@/app/actions/contact";
 
 export const useContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<FormStatus>("idle");
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!formRef.current) return;
+    setStatus("loading");
 
     const formData = new FormData(formRef.current);
     const email = formData.get("user_email") as string;
-
     const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
     if (!emailRegex.test(email)) {
-      return;
-    }
-
-    const serviceID = process.env.NEXT_PUBLIC_CONTACT_SERVICE;
-    const publicKey = process.env.NEXT_PUBLIC_CONTACT_KEY;
-
-    if (!serviceID || !publicKey) {
-      console.error("Missing EmailJS credentials");
       setStatus("error");
       return;
     }
 
-    try {
-      setStatus("loading");
-      await emailjs.sendForm(
-        serviceID,
-        "contact_form",
-        formRef.current,
-        publicKey,
-      );
+    const result = await sendContactEmail(formData);
+
+    if (result.success) {
       setStatus("success");
       formRef.current.reset();
-    } catch (error) {
-      console.error("Email sending failed:", error);
+    } else {
       setStatus("error");
-    } finally {
-      setTimeout(() => setStatus("idle"), 2000);
     }
-  };
+
+    setTimeout(() => setStatus("idle"), 2200);
+  }
 
   return { formRef, status, handleSubmit };
 };
