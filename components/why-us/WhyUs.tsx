@@ -13,7 +13,7 @@ const WhyUs = () => {
           {WHYUS_HEADING}
         </h2>
 
-        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-4 lg:gap-8 max-w-[240px] mx-auto xs:max-w-full xs:mx-0">
+        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-4 lg:gap-8 max-w-4/5 mx-auto xs:max-w-full xs:mx-0">
           {WHYUS.map((reason, index) => (
             <WhyUsCard key={reason.title} reason={reason} index={index} />
           ))}
